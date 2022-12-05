@@ -1,0 +1,86 @@
+@import url('./general.css');
+
+.data-selector{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.data-selector label{
+    width: 10em;
+    height: 4em;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #45246e;
+    background-color: #7856a1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 0px 5px 0px;
+}
+
+/*Redondeo los botones*/
+
+.data-selector .monofasico{
+    border-radius: 10px 70px 10px 70px;
+}
+
+.data-selector .trifasico{
+    border-radius: 70px 10px 70px 10px;
+}
+
+.data-selector .enterrado{
+    border-radius: 10px 70px 10px 70px;
+}
+
+.data-selector .exterior{
+    border-radius: 10px;
+}
+
+.data-selector .aire{
+    border-radius: 70px 10px 70px 10px;
+}
+/*Termina el redondeo*/
+
+.data-selector input{
+    visibility: hidden;
+}
+
+/*Agregarle estados a los botones para seleccionarlos
+y que cambien de estilo*/
+
+
+
+/*Mediaquerys*/
+@media screen and (width>=502px) and (width<=722px){
+    .data-selector .exterior{
+        border-radius: 70px 10px 70px 10px;
+    }
+    .data-selector .aire{
+        border-radius: 10px 10px 70px 70px;
+    }
+}
+
+@media screen and (width<=501px){
+    /*Botones tension*/
+    .data-selector .monofasico{
+        border-radius: 70px 70px 10px 10px;
+    }
+    .data-selector .trifasico{
+        border-radius: 10px 10px 70px 70px;
+    }
+  
+    /*Botones cableado*/
+    .data-selector .exterior{
+        border-radius: 10px 10px 10px 10px;
+    }
+    .data-selector .aire{
+        border-radius: 10px 10px 70px 70px;
+    }
+    .data-selector .enterrado{
+        border-radius: 70px 70px 10px 10px;
+    }
+}
+
+
+/*Termina*/
