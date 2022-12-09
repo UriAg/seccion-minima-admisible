@@ -1,9 +1,9 @@
 import './App.css';
-import Entrada from './componentes/Inputs';
+import Input from './componentes/Input';
 import Selector from './componentes/Selector';
-import Boton from './componentes/Button';
+import Button from './componentes/Button';
 
-/*no son botones en si, son labels a los que quiero darles la función*/
+/*no son Buttones en si, son labels a los que quiero darles la función*/
 /*Asi al clickear el label queda seleccionada la opcion con un cambio de estilo*/
 
 function App() {
@@ -16,24 +16,24 @@ function App() {
           <Selector id={'tension monophase'}>Monofásico</Selector>
           <Selector id={'tension triphasic'}>Trifásico</Selector>
         </div>
-        <Entrada>Potencia nominal</Entrada>
-        <Entrada>Valor Fc</Entrada>
-        <Entrada>Valor Fs</Entrada>
-        <Entrada>Rendimiento</Entrada>
-        <Entrada>Coseno de fí</Entrada>
+        <Input>Potencia nominal</Input>
+        <Input>Valor Fc</Input>
+        <Input>Valor Fs</Input>
+        <Input>Rendimiento</Input>
+        <Input>Coseno de fí</Input>
         <h1 className='conduit-title'>Seleccionar tipo de Cañería</h1>
         <div className='conduit-selector-container'>
           <Selector id={'conduit buried'}>Enterrado</Selector>
           <Selector id={'conduit exterior'}>Exterior</Selector>
           <Selector id={'conduit air'}>Aire</Selector>
         </div>
-        <Entrada>Longitud del segmento en metros</Entrada>
-        <Entrada>Máximo porcentaje de caída</Entrada>
-        <Entrada>Valor Zt</Entrada>
-        <Entrada>Valor K</Entrada>
+        <Input>Longitud del segmento en metros</Input>
+        <Input>Máximo porcentaje de caída</Input>
+        <Input>Valor Zt</Input>
+        <Input>Valor K</Input>
         <div className='button-container'>
-          <Boton identifier={'submit'}>Calcular</Boton>
-          <Boton identifier={'clear'}>Limpiar</Boton>
+          <Button identifier={'submit'}>Calcular</Button>
+          <Button identifier={'clear'}>Limpiar</Button>
         </div>
       </div>
     </div>

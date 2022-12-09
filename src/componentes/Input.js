@@ -1,7 +1,7 @@
 import React from 'react';
-import '../stylesheets/Inputs.css'
+import '../stylesheets/Input.css'
 
-function Entrada(props){
+function Input(props){
 
 
     return(
@@ -11,6 +11,6 @@ function Entrada(props){
     );
 }
 
-export default Entrada;
+export default Input;
 
 /*Termina*/
