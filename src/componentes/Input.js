@@ -6,7 +6,7 @@ function Input(props){
 
     return(
         <div className='data-input'>
-            <input className='number-input' type='number' placeholder={props.children}/>
+            <input className='number-input' type='number' placeholder={props.children} required/>
         </div>
     );
 }

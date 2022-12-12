@@ -2,7 +2,6 @@ import React from 'react';
 import '../stylesheets/Button.css';
 
 /*Objetos*/
-const d = document;
 
 
 function Boton(props){

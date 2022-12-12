@@ -21,8 +21,20 @@
     border-radius: 50px 50px 50px 50px;
 }
 
+/*Mediaquerys tablet*/
+@media screen and (width<=722px){
+    .control-button #submit{
+        background-color: #126312;
+        color: #000;
+    }
 
-/*Mediaquerys*/
+    .control-button #clear{
+        background-color: #631212;
+        color: #000;
+    }
+}
+
+/*Mediaquerys celular*/
 @media  screen and (width<=475px) {
     .control-button #submit{
         border-radius: 70px 70px 10px 10px;

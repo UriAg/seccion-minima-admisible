@@ -17,19 +17,22 @@
     justify-content: center;
     align-items: center;
     margin: 5px 0px 5px 0px;
+    transition: all .1s ease;
+    cursor: pointer;
+    -webkit-user-select: none;
 }
 
 /*Redondeo los botones*/
 
-.data-selector .monofasico{
+.data-selector .monophase{
     border-radius: 10px 70px 10px 70px;
 }
 
-.data-selector .trifasico{
+.data-selector .triphasic{
     border-radius: 70px 10px 70px 10px;
 }
 
-.data-selector .enterrado{
+.data-selector .buried{
     border-radius: 10px 70px 10px 70px;
 }
 
@@ -37,7 +40,7 @@
     border-radius: 10px;
 }
 
-.data-selector .aire{
+.data-selector .air{
     border-radius: 70px 10px 70px 10px;
 }
 /*Termina el redondeo*/
@@ -46,27 +49,23 @@
     visibility: hidden;
 }
 
-/*Agregarle estados a los botones para seleccionarlos
-y que cambien de estilo*/
-
-
-
-/*Mediaquerys*/
+/*Mediaquerys tablet*/
 @media screen and (width>=502px) and (width<=722px){
     .data-selector .exterior{
         border-radius: 70px 10px 70px 10px;
     }
-    .data-selector .aire{
+    .data-selector .air{
         border-radius: 10px 10px 70px 70px;
     }
 }
 
+/*Mediaquerys celular*/
 @media screen and (width<=501px){
     /*Botones tension*/
-    .data-selector .monofasico{
+    .data-selector .monophase{
         border-radius: 70px 70px 10px 10px;
     }
-    .data-selector .trifasico{
+    .data-selector .triphasic{
         border-radius: 10px 10px 70px 70px;
     }
   
@@ -74,12 +73,41 @@ y que cambien de estilo*/
     .data-selector .exterior{
         border-radius: 10px 10px 10px 10px;
     }
-    .data-selector .aire{
+    .data-selector .air{
         border-radius: 10px 10px 70px 70px;
     }
-    .data-selector .enterrado{
+    .data-selector .buried{
         border-radius: 70px 70px 10px 10px;
     }
+}
+
+/*Cambio de estilos*/
+.tension-selector-container .btn--active{
+        width: 10em;
+        height: 4em;
+        font-size: 1.3em;
+        font-weight: bold;
+        color: #8e4edc;
+        background-color: #482f66;
+        border: 2px solid #aa5412;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 5px 0px 5px 0px;
+}
+
+.conduit-selector-container .btn--active{
+    width: 10em;
+    height: 4em;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #8e4edc;
+    background-color: #482f66;
+    border: 2px solid #aa5412;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 0px 5px 0px;
 }
 
 
