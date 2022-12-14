@@ -4,13 +4,13 @@ import '../stylesheets/Button.css';
 /*Objetos*/
 
 
-function Boton(props){
+const Boton = React.forwardRef((props, ref) => {
     return(
         <div className='control-button'>
-            <button type='submit' id={props.identifier}>{props.children}</button>
+            <button type='submit' id={props.identifier} onClick={props.action}>{props.children}</button>
         </div>
     );
-}
+})
 
 
 

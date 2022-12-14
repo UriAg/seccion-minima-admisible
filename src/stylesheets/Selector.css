@@ -24,7 +24,7 @@
 
 /*Redondeo los botones*/
 
-.data-selector .monophase{
+.data-selector .monophasic{
     border-radius: 10px 70px 10px 70px;
 }
 
@@ -62,7 +62,7 @@
 /*Mediaquerys celular*/
 @media screen and (width<=501px){
     /*Botones tension*/
-    .data-selector .monophase{
+    .data-selector .monophasic{
         border-radius: 70px 70px 10px 10px;
     }
     .data-selector .triphasic{
