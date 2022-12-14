@@ -4,8 +4,6 @@ import Output from './componentes/Output';
 import Selector from './componentes/Selector';
 import Button from './componentes/Button';
 import { useRef, useState } from 'react';
-import { render } from '@testing-library/react';
-import { clear } from '@testing-library/user-event/dist/clear';
 
 function App() {
   //Se crean las referencias y variables para tension
@@ -214,7 +212,6 @@ function App() {
  let R10=0.326;
  let R11=0.248;
  let R12=0.194;
- let RNO=`Demasiada corriente, no hay datos en tabla `;
  let REC=[R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12];
 
  let X1=0.108;
@@ -229,7 +226,6 @@ function App() {
  let X10=0.0736;
  let X11=0.0733;
  let X12=0.0729;
- let XNO=`Demasiada corriente, no hay datos en tabla `;
  let XEC=[X1, X2, X3, X4, X5, X6, X7, X8, X9, X10, X11, X12]
 
  //Calculo para tensión monofásica
@@ -315,12 +311,14 @@ function App() {
         REleg=11;
         XEleg=11;
         
-    }else{
+    }else if(ProyectedCurrentOk<=MaxCurrentBuried[12]){
 
         SEleg=12;
         REleg=12;
         XEleg=12;
         
+    }else{
+        alert(seccionNO);
     }
 } else if (BtnConduit==='exterior') {//cañeria externa
     if (ProyectedCurrentOk<=MaxCurrentExterior[0]) {
@@ -395,12 +393,14 @@ function App() {
         REleg=11;
         XEleg=11;
         
-    }else{
+    }else if(ProyectedCurrentOk<=MaxCurrentBuried[12]){
 
         SEleg=12;
         REleg=12;
         XEleg=12;
-
+        
+    }else{
+        alert(seccionNO);
     }
 }else if(BtnConduit==='air') {//Aire
     if (ProyectedCurrentOk<=MaxCurrentAir[0]) {
@@ -475,13 +475,14 @@ function App() {
         REleg=11;
         XEleg=11;
         
-    }else{
+    }else if(ProyectedCurrentOk<=MaxCurrentBuried[12]){
 
         SEleg=12;
         REleg=12;
         XEleg=12;
         
-
+    }else{
+        alert(seccionNO);
     }
 }
 
@@ -620,13 +621,15 @@ MinimumSectionMessage="Sección mínima del cable pero no recomendable: "+Minimu
           REleg=11;
           XEleg=11;
           
-      }else{
-  
-          SEleg=12;
-          REleg=12;
-          XEleg=12;
-          
-      }
+      }else if(ProyectedCurrentOk<=MaxCurrentBuried[12]){
+
+        SEleg=12;
+        REleg=12;
+        XEleg=12;
+        
+    }else{
+        alert(seccionNO);
+    }
   } else if (BtnConduit==='exterior') {//cañeria externa
       if (ProyectedCurrentOk<=MaxCurrentExterior[0]) {
               
@@ -700,13 +703,15 @@ MinimumSectionMessage="Sección mínima del cable pero no recomendable: "+Minimu
           REleg=11;
           XEleg=11;
           
-      }else{
-  
-          SEleg=12;
-          REleg=12;
-          XEleg=12;
-  
-      }
+      }else if(ProyectedCurrentOk<=MaxCurrentBuried[12]){
+
+        SEleg=12;
+        REleg=12;
+        XEleg=12;
+        
+    }else{
+        alert(seccionNO);
+    }
   }else if(BtnConduit==='air') {//Aire
       if (ProyectedCurrentOk<=MaxCurrentAir[0]) {
               
@@ -780,14 +785,15 @@ MinimumSectionMessage="Sección mínima del cable pero no recomendable: "+Minimu
           REleg=11;
           XEleg=11;
           
-      }else{
-  
-          SEleg=12;
-          REleg=12;
-          XEleg=12;
-          
-  
-      }
+      }else if(ProyectedCurrentOk<=MaxCurrentBuried[12]){
+
+        SEleg=12;
+        REleg=12;
+        XEleg=12;
+        
+    }else{
+        alert(seccionNO);
+    }
   }
   
   //Porcentaje caída de tensión, Seno de Fí y longitud en Km
