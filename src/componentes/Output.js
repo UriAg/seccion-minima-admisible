@@ -1,13 +1,14 @@
 import React from "react";
+import '../stylesheets/Output.css';
 
 
-const Output = React.forwardRef((props, ref) => {
+function Output(props) {
     return(
-        <div className="data__output">
-            <h2 ref={ref} className={props.output}>{props.title}</h2>
+        <div className="data__output__container">
+            <h2 className='data__output__data'>{props.title}</h2>
         </div>
     );
-})
+}
 
 export default Output;
 /*Termina*/

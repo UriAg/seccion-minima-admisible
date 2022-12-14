@@ -8,25 +8,28 @@
 }
 
 /*Estilizacion de todo lo que no sea un componente*/
-
+/*Container de entrada de datos*/
 .data-input-container{
+    -webkit-user-select: none;
     background-color: #151313;
     margin: auto;
 
 }
-
+/*Titulo electrificación*/
 .tension-title{
     color: #fff;
     font-family: 'Lato', Roboto;
     text-align: center;
 }
 
+/*Titulo cañería*/
 .conduit-title{
     color: #fff;
     font-family: 'Lato', Roboto;
     text-align: center;
 }
 
+/*Btn tensión*/
 .tension-selector-container{
     display: flex;
     justify-content: space-around;
@@ -36,6 +39,7 @@
     
 }
 
+/*Btn cañería*/
 .conduit-selector-container{
     display: flex;
     justify-content: space-around;
@@ -44,11 +48,43 @@
     flex-wrap: wrap;
 }
 
+/*Btn submit y clear*/
 .button-container{
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 10px 30px;
     flex-wrap: wrap;
+}
+
+/*Renderizado de datos*/
+
+.results__title{
+    color: #fff;
+    font-family: 'Lato', Roboto;
+    text-align: center;
+}
+
+.results__title::before{
+    margin-right: 5px;
+    content: '\2193';
+}
+
+.results__title::after{
+    margin-left: 5px;
+    content: '\2193';
+}
+
+.data__output__general{
+    display: none;
+    -webkit-user-select: none;
+    margin: auto;
+    padding-top: 15px;
+}
+
+.data__output__general--active{
+    -webkit-user-select: none;
+    margin: auto;
+    padding-top: 15px;
 }
 /*Termina*/

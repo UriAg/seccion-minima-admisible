@@ -10,6 +10,8 @@ margin: 0;
 
 /*Estilo div y elemento*/
 .data-input{
+    border-left: 2px solid  #ae9f98;
+    border-right: 2px solid  #ae9f98;
     padding: 10px;
     background-color: #ab591a;
     margin: 5px;

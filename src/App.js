@@ -5,6 +5,7 @@ import Selector from './componentes/Selector';
 import Button from './componentes/Button';
 import { useRef, useState } from 'react';
 import { render } from '@testing-library/react';
+import { clear } from '@testing-library/user-event/dist/clear';
 
 function App() {
   //Se crean las referencias y variables para tension
@@ -55,15 +56,6 @@ function App() {
   exterior.current.classList.remove('btn--active');
   buried.current.classList.remove('btn--active');
  }
-
- //Se crean referencias y variables para salidas
- const dPMOutput = useRef();
- const pCMOutput = useRef();
- const cSMOutput = useRef();
- const tFMOutout = useRef();
- const zRMOutout = useRef();
- const sCCMOutout = useRef();
- const mSMOutout = useRef();
 
  //Se crean referencias y variables para entradas
  const ratedPowerInput = useRef();
@@ -123,21 +115,40 @@ function App() {
   KV = parseFloat(e.target.value);
  }
 
- //Se crean referencias botones
- const btnCalc = useRef();
+ //Se crean referencias botones y declaración de variables
+ const [ResultsState, setResultsState] = useState('data__output__general');
 
  //Acciones para botones
- const submit = (e) => {
+ const submit = (e) => {//Btn submit
   if(BtnTension==='monophasic'){
     monophasicTension();
+    setResultsState('data__output__general--active');
+
   }
   else if(BtnTension==='triphasic'){
     triphasicTension();
+    setResultsState('data__output__general--active');
   }
   else{
     error();
   }
- } 
+ }
+
+ //Reestablece para volver a calcular
+ const reset = () => {
+  setDemandedPowerRender();
+  setProyectedCurrentRender();
+  setChosenSectionRender();
+  setTensionFallRender();
+  setZRValueRender();
+  setSCCValueRender();
+  setMinimumSectionRender();
+ }
+ 
+ const clear = (e) =>{//Btn clear
+    setResultsState('data__output__general');
+    reset();
+ }
 
  //Variables para los calculos
  let DemandedPowerOk;
@@ -158,6 +169,15 @@ function App() {
  let ZRValueMessage;
  let SCCValueMessage;
  let MinimumSectionMessage;
+ //Variables para renderizar resultado
+ const [DemandedPowerRender, setDemandedPowerRender] = useState();
+ const [ProyectedCurrentRender, setProyectedCurrentRender] = useState();
+ const [ChosenSectionRender, setChosenSectionRender] = useState();
+ const [TensionFallRender, setTensionFallRender] = useState();
+ const [ZRValueRender, setZRValueRender] = useState();
+ const [SCCValueRender, setSCCValueRender] = useState();
+ const [MinimumSectionRender, setMinimumSectionRender] = useState();
+
  //------Variables para cableado
  let SEleg;
  let REleg;
@@ -211,8 +231,6 @@ function App() {
  let X12=0.0729;
  let XNO=`Demasiada corriente, no hay datos en tabla `;
  let XEC=[X1, X2, X3, X4, X5, X6, X7, X8, X9, X10, X11, X12]
-
- const [titulo, setTitulo] = useState();
 
  //Calculo para tensión monofásica
  const monophasicTension = () =>{
@@ -499,6 +517,8 @@ SCCValueMessage="Corriente de cortocircuito: "+ShortCircuitCurrent+" A ";
 MinimumSection=((ShortCircuitCurrent*Math.sqrt(0.02))/KV);
 MinimumSectionMessage="Sección mínima del cable pero no recomendable: "+MinimumSection+" mm2 ";
 
+
+//Aplica valor para renderizado
   console.log(DemandedPowerMessage);
   console.log(ProyectedCurrentMessage);
   console.log(ChosenSection);
@@ -506,6 +526,14 @@ MinimumSectionMessage="Sección mínima del cable pero no recomendable: "+Minimu
   console.log(ZRValueMessage);
   console.log(SCCValueMessage);
   console.log(MinimumSectionMessage);
+
+  setDemandedPowerRender(DemandedPowerMessage);
+  setProyectedCurrentRender(ProyectedCurrentMessage);
+  setChosenSectionRender(ChosenSection);
+  setTensionFallRender(TensionFallMessage);
+  setZRValueRender(ZRValueMessage);
+  setSCCValueRender(SCCValueMessage);
+  setMinimumSectionRender(MinimumSectionMessage);
 }
 
 
@@ -795,6 +823,8 @@ MinimumSectionMessage="Sección mínima del cable pero no recomendable: "+Minimu
   MinimumSection=((ShortCircuitCurrent*Math.sqrt(0.02))/KV);
   MinimumSectionMessage="Sección mínima del cable pero no recomendable: "+MinimumSection+" mm2 ";
 
+
+  //Aplica valor para renderizado
   console.log(DemandedPowerMessage);
   console.log(ProyectedCurrentMessage);
   console.log(ChosenSection);
@@ -803,7 +833,13 @@ MinimumSectionMessage="Sección mínima del cable pero no recomendable: "+Minimu
   console.log(SCCValueMessage);
   console.log(MinimumSectionMessage);
 
-  
+  setDemandedPowerRender(DemandedPowerMessage);
+  setProyectedCurrentRender(ProyectedCurrentMessage);
+  setChosenSectionRender(ChosenSection);
+  setTensionFallRender(TensionFallMessage);
+  setZRValueRender(ZRValueMessage);
+  setSCCValueRender(SCCValueMessage);
+  setMinimumSectionRender(MinimumSectionMessage);
 }
 
  //Respuesta para ninguna opción
@@ -836,17 +872,18 @@ MinimumSectionMessage="Sección mínima del cable pero no recomendable: "+Minimu
         <Input ref={ztValueInput} change={applyValueZtV} >Valor Zt</Input>
         <Input ref={kValueInput} change={applyValueKV} >Valor K</Input>
         <div className='button-container'>
-          <Button ref={btnCalc} identifier={'submit'} action={submit}>Calcular</Button>
-          <Button identifier={'clear'}>Limpiar</Button>
+          <Button identifier={'submit'} action={submit}>Calcular</Button>
+          <Button identifier={'clear'} action={clear}>Limpiar</Button>
         </div>
-        <div className='output__container'>
-          <Output ref={dPMOutput} title={DemandedPowerMessage}/>
-          <Output ref={pCMOutput} /*title={ProyectedCurrentMessage}*//>
-          <Output ref={cSMOutput} /*title={ChosenSection}*//>
-          <Output ref={tFMOutout} /*title={TensionFallMessage}*//>
-          <Output ref={zRMOutout} /*title={ZRValueMessage}*//>
-          <Output ref={sCCMOutout} /*title={SCCValueMessage}*//>
-          <Output ref={mSMOutout} /*title={MinimumSection}*//>
+        <h1 className='results__title'>Resultados</h1>
+        <div className={ResultsState}>
+          <Output title={DemandedPowerRender}/>
+          <Output title={ProyectedCurrentRender}/>
+          <Output title={ChosenSectionRender}/>
+          <Output title={TensionFallRender}/>
+          <Output title={ZRValueRender}/>
+          <Output title={SCCValueRender}/>
+          <Output title={MinimumSectionRender}/>
         </div>
       </div>
     </div>
