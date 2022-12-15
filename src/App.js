@@ -912,12 +912,10 @@ MinimumSectionMessage="Sección mínima del cable pero no recomendable: "+Minimu
   alert('No se eligió tipo de electrificación');
  }
 
- const referencia=createRef();
-
  //Renderizado
   return (
     <div className="App">
-      <div ref={referencia} className='data-input-container'>
+      <div className='data-input-container'>
       <h1 className='tension-title'>Seleccionar tipo de electrificación</h1>
         <div className='tension-selector-container'>
           <Selector ref={monophasic} action={changeStyleMono} id={'tension monophasic '}>Monofásico</Selector>
