@@ -19,6 +19,7 @@
 .tension-title{
     color: #fff;
     font-family: 'Lato', Roboto;
+    padding: 10px 30px;
     text-align: center;
 }
 
@@ -26,6 +27,7 @@
 .conduit-title{
     color: #fff;
     font-family: 'Lato', Roboto;
+    padding: 10px 30px;
     text-align: center;
 }
 
@@ -62,6 +64,7 @@
 .results__title{
     color: #fff;
     font-family: 'Lato', Roboto;
+    padding: 10px 30px;
     text-align: center;
 }
 

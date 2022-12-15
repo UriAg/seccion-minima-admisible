@@ -1,9 +1,7 @@
 @import url('./general.css');
 
-.data-selector{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.data-selector input{
+    display: none;
 }
 
 .data-selector label{
@@ -50,7 +48,7 @@
 }
 
 /*Mediaquerys tablet*/
-@media screen and (width>=502px) and (width<=722px){
+@media screen and (width>=476px) and (width<=683px){
     .data-selector .exterior{
         border-radius: 70px 10px 70px 10px;
     }
@@ -60,7 +58,7 @@
 }
 
 /*Mediaquerys celular*/
-@media screen and (width<=501px){
+@media screen and (width<=475px){
     /*Botones tension*/
     .data-selector .monophasic{
         border-radius: 70px 70px 10px 10px;

@@ -3,7 +3,7 @@ import Input from './componentes/Input';
 import Output from './componentes/Output';
 import Selector from './componentes/Selector';
 import Button from './componentes/Button';
-import { useRef, useState } from 'react';
+import { createRef, useRef, useState } from 'react';
 
 function App() {
   //Se crean las referencias y variables para tension
@@ -78,7 +78,7 @@ function App() {
 
  //Acciones para entradas
  const applyValueRP = (e) => {
-  RP = parseFloat(e.target.value);
+ RP = parseFloat(e.target.value);
  }
 
  const applyValueFC = (e) => {
@@ -113,8 +113,65 @@ function App() {
   KV = parseFloat(e.target.value);
  }
 
+ //Cambio de focus entre inputs
+const changeFocusFC = (e) =>{
+ if(e.keyCode == 13){
+    fcValueInput.current.focus();
+ }
+}
+
+const changeFocusFS = (e) =>{
+ if(e.keyCode == 13){
+    fsValueInput.current.focus();
+ }
+}
+
+const changeFocusPer = (e) =>{
+ if(e.keyCode == 13){
+    performanceInput.current.focus();
+ }
+}
+ 
+const changeFocusFiC = (e) =>{
+ if(e.keyCode == 13){
+    fiCosInput.current.focus();
+ }
+}
+
+const changeFocusSL = (e) =>{
+ if(e.keyCode == 13){
+    segmentLengthInput.current.focus();
+ }
+}
+
+const changeFocusMTF = (e) =>{
+ if(e.keyCode == 13){
+    maxTensionFallInput.current.focus();
+ }
+}
+
+const changeFocusZT = (e) =>{
+ if(e.keyCode == 13){
+    ztValueInput.current.focus();
+ }
+}
+
+const changeFocusK = (e) =>{ 
+ if(e.keyCode == 13){
+    kValueInput.current.focus();
+ }
+}
+ //Cambio de focus ultimo input
+const changeFocusBtn = (e) =>{  
+ if(e.keyCode == 13){
+    btnSubmit.current.focus();
+ }
+}
+
  //Se crean referencias botones y declaración de variables
  const [ResultsState, setResultsState] = useState('data__output__general');
+ const btnSubmit = useRef();
+ const btnClear = useRef();
 
  //Acciones para botones
  const submit = (e) => {//Btn submit
@@ -146,7 +203,9 @@ function App() {
  const clear = (e) =>{//Btn clear
     setResultsState('data__output__general');
     reset();
- }
+    BtnTension === 'monophasic' ? monophasic.current.classList.remove('btn--active') : triphasic.current.classList.remove('btn--active');
+    BtnConduit === 'buried' ? buried.current.classList.remove('btn--active'): BtnConduit === 'exterior' ? exterior.current.classList.remove('btn--active') : air.current.classList.remove('btn--active');
+}
 
  //Variables para los calculos
  let DemandedPowerOk;
@@ -850,36 +909,38 @@ MinimumSectionMessage="Sección mínima del cable pero no recomendable: "+Minimu
 
  //Respuesta para ninguna opción
  const error = () =>{
-  alert('ERROR');
+  alert('No se eligió tipo de electrificación');
  }
+
+ const referencia=createRef();
 
  //Renderizado
   return (
     <div className="App">
-      <div className='data-input-container'>
+      <div ref={referencia} className='data-input-container'>
       <h1 className='tension-title'>Seleccionar tipo de electrificación</h1>
         <div className='tension-selector-container'>
           <Selector ref={monophasic} action={changeStyleMono} id={'tension monophasic '}>Monofásico</Selector>
           <Selector ref={triphasic} action={changeStyleTri} id={'tension triphasic'}>Trifásico</Selector>
         </div>
-        <Input ref={ratedPowerInput} change={applyValueRP}>Potencia nominal</Input>
-        <Input ref={fcValueInput} change={applyValueFC} >Valor Fc</Input>
-        <Input ref={fsValueInput} change={applyValueFS} >Valor Fs</Input>
-        <Input ref={performanceInput} change={applyValuePer} >Rendimiento</Input>
-        <Input ref={fiCosInput} change={applyValueFiC} >Coseno de fí</Input>
+        <Input ref={ratedPowerInput} change={applyValueRP} keydown={changeFocusFC}>Potencia nominal</Input>
+        <Input ref={fcValueInput} change={applyValueFC} keydown={changeFocusFS}>Valor Fc</Input>
+        <Input ref={fsValueInput} change={applyValueFS} keydown={changeFocusPer}>Valor Fs</Input>
+        <Input ref={performanceInput} change={applyValuePer} keydown={changeFocusFiC}>Rendimiento</Input>
+        <Input ref={fiCosInput} change={applyValueFiC} keydown={changeFocusSL}>Coseno de fí</Input>
         <h1 className='conduit-title'>Seleccionar tipo de Cañería</h1>
         <div className='conduit-selector-container'>
           <Selector ref={buried} action={changeStyleBur} id={'conduit buried'}>Enterrado</Selector>
           <Selector ref={exterior} action={changeStyleExt} id={'conduit exterior'}>Exterior</Selector>
           <Selector ref={air} action={changeStyleAir} id={'conduit air'}>Aire</Selector>
         </div>
-        <Input ref={segmentLengthInput} change={applyValueSL} >Longitud del segmento en metros</Input>
-        <Input ref={maxTensionFallInput} change={applyValueMTF} >Máximo porcentaje de caída</Input>
-        <Input ref={ztValueInput} change={applyValueZtV} >Valor Zt</Input>
-        <Input ref={kValueInput} change={applyValueKV} >Valor K</Input>
+        <Input ref={segmentLengthInput} change={applyValueSL} keydown={changeFocusMTF}>Longitud del segmento en metros</Input>
+        <Input ref={maxTensionFallInput} change={applyValueMTF} keydown={changeFocusZT}>Máximo porcentaje de caída</Input>
+        <Input ref={ztValueInput} change={applyValueZtV} keydown={changeFocusK}>Valor Zt</Input>
+        <Input ref={kValueInput} change={applyValueKV} keydown={changeFocusBtn}>Valor K</Input>
         <div className='button-container'>
-          <Button identifier={'submit'} action={submit}>Calcular</Button>
-          <Button identifier={'clear'} action={clear}>Limpiar</Button>
+          <Button ref={btnSubmit} identifier={'submit'} action={submit}>Calcular</Button>
+          <Button ref={btnClear} identifier={'clear'} action={clear}>Limpiar</Button>
         </div>
         <h1 className='results__title'>Resultados</h1>
         <div className={ResultsState}>
