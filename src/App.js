@@ -3,7 +3,7 @@ import Input from './componentes/Input';
 import Output from './componentes/Output';
 import Selector from './componentes/Selector';
 import Button from './componentes/Button';
-import { createRef, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 function App() {
   //Se crean las referencias y variables para tension
