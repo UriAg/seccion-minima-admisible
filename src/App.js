@@ -115,55 +115,55 @@ function App() {
 
  //Cambio de focus entre inputs
 const changeFocusFC = (e) =>{
- if(e.keyCode == 13){
+ if(e.keyCode === 13){
     fcValueInput.current.focus();
  }
 }
 
 const changeFocusFS = (e) =>{
- if(e.keyCode == 13){
+ if(e.keyCode === 13){
     fsValueInput.current.focus();
  }
 }
 
 const changeFocusPer = (e) =>{
- if(e.keyCode == 13){
+ if(e.keyCode === 13){
     performanceInput.current.focus();
  }
 }
  
 const changeFocusFiC = (e) =>{
- if(e.keyCode == 13){
+ if(e.keyCode === 13){
     fiCosInput.current.focus();
  }
 }
 
 const changeFocusSL = (e) =>{
- if(e.keyCode == 13){
+ if(e.keyCode === 13){
     segmentLengthInput.current.focus();
  }
 }
 
 const changeFocusMTF = (e) =>{
- if(e.keyCode == 13){
+ if(e.keyCode === 13){
     maxTensionFallInput.current.focus();
  }
 }
 
 const changeFocusZT = (e) =>{
- if(e.keyCode == 13){
+ if(e.keyCode === 13){
     ztValueInput.current.focus();
  }
 }
 
 const changeFocusK = (e) =>{ 
- if(e.keyCode == 13){
+ if(e.keyCode === 13){
     kValueInput.current.focus();
  }
 }
  //Cambio de focus ultimo input
 const changeFocusBtn = (e) =>{  
- if(e.keyCode == 13){
+ if(e.keyCode === 13){
     btnSubmit.current.focus();
  }
 }
