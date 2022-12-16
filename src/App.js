@@ -885,10 +885,11 @@ MinimumSectionMessage="Sección mínima del cable pero no recomendable: "+Minimu
   }else{
     TensionFall2=(Math.sqrt(3)*LengthKm*ProyectedCurrentOk*((REC[REleg+1]*FiC)+(XEC[XEleg+1]*SenFi))*(100/380));
     if (TensionFall2<=MTF) {
-      
+      ChosenSection = seccionesEC[SEleg+1];
       TensionFallMessage="Con un porcentaje de caida del: "+TensionFall2+"% menor que "+MTF+"%";
     }
     else{
+      ChosenSection = seccionesEC[SEleg+2];
       TensionFall3=(Math.sqrt(3)*LengthKm*ProyectedCurrentOk*((REC[REleg+2]*FiC)+(XEC[XEleg+2]*SenFi))*(100/380));
       TensionFallMessage="Con un porcentaje de caida del: "+TensionFall3+"% menor que "+MTF+"%";
     }
