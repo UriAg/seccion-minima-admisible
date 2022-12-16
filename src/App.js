@@ -309,10 +309,10 @@ const changeFocusBtn = (e) =>{
  const monophasicTension = () =>{
   //Potencia demandada
   DemandedPowerOk=(RP*FC*FS);
-  DemandedPowerMessage="Potencia demandada: "+DemandedPowerOk;
+  DemandedPowerMessage="Potencia demandada: "+DemandedPowerOk+" W";
   //Corriente de proyecto
   ProyectedCurrentOk=(DemandedPowerOk/(220*Per*FiC));
-  ProyectedCurrentMessage="Corriente de proyecto: "+ProyectedCurrentOk;
+  ProyectedCurrentMessage="Corriente de proyecto: "+ProyectedCurrentOk+" A";
   
   //Se establecen los datos de Reactancia, Resistencia y Sección
   if (BtnConduit==='buried') {//Enterrado
@@ -575,9 +575,11 @@ if (TensionFall<=MTF) {
 }else{
   TensionFall2=(LengthKm*ProyectedCurrentOk*((REC[REleg+1]*FiC)+(XEC[XEleg+1]*SenFi))*(100/220));
   if (TensionFall2<=MTF) {
+    ChosenSection = seccionesEC[SEleg+1];
     TensionFallMessage="Con un porcentaje de caida del: "+TensionFall2+"% menor que "+MTF+"%";
   }
   else{
+    ChosenSection = seccionesEC[SEleg+2];
     TensionFall3=(LengthKm*ProyectedCurrentOk*((REC[REleg+2]*FiC)+(XEC[XEleg+2]*SenFi))*(100/220));
     TensionFallMessage="Con un porcentaje de caida del: "+TensionFall3+"% menor que "+MTF+"%";
   }
@@ -597,14 +599,6 @@ MinimumSectionMessage="Sección mínima del cable pero no recomendable: "+Minimu
 
 
 //Aplica valor para renderizado
-  console.log(DemandedPowerMessage);
-  console.log(ProyectedCurrentMessage);
-  console.log(ChosenSection);
-  console.log(TensionFallMessage);
-  console.log(ZRValueMessage);
-  console.log(SCCValueMessage);
-  console.log(MinimumSectionMessage);
-
   setDemandedPowerRender(DemandedPowerMessage);
   setProyectedCurrentRender(ProyectedCurrentMessage);
   setChosenSectionRender(ChosenSection);
@@ -619,10 +613,10 @@ MinimumSectionMessage="Sección mínima del cable pero no recomendable: "+Minimu
  const triphasicTension = () =>{
     //Potencia demandada
     DemandedPowerOk=(RP*FC*FS);
-    DemandedPowerMessage="Potencia demandada: "+DemandedPowerOk;
+    DemandedPowerMessage="Potencia demandada: "+DemandedPowerOk+" W";
     //Corriente de proyecto
     ProyectedCurrentOk=(DemandedPowerOk/(Math.sqrt(3)*380*Per*FiC));
-    ProyectedCurrentMessage="Corriente de proyecto: "+ProyectedCurrentOk;
+    ProyectedCurrentMessage="Corriente de proyecto: "+ProyectedCurrentOk+" A";
     
     //Se establecen los datos de Reactancia, Resistencia y Sección
     if (BtnConduit==='buried') {//Enterrado
@@ -909,14 +903,6 @@ MinimumSectionMessage="Sección mínima del cable pero no recomendable: "+Minimu
 
 
   //Aplica valor para renderizado
-  console.log(DemandedPowerMessage);
-  console.log(ProyectedCurrentMessage);
-  console.log(ChosenSection);
-  console.log(TensionFallMessage);
-  console.log(ZRValueMessage);
-  console.log(SCCValueMessage);
-  console.log(MinimumSectionMessage);
-
   setDemandedPowerRender(DemandedPowerMessage);
   setProyectedCurrentRender(ProyectedCurrentMessage);
   setChosenSectionRender(ChosenSection);
