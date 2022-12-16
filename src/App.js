@@ -140,7 +140,8 @@ const changeFocusFiC = (e) =>{
 
 const changeFocusSL = (e) =>{
  if(e.keyCode === 13){
-    segmentLengthInput.current.focus();
+    document.activeElement.blur();
+    alert('Elegit tipo de cañería');
  }
 }
 
@@ -916,11 +917,11 @@ MinimumSectionMessage="Sección mínima del cable pero no recomendable: "+Minimu
  const error = () =>{
   alert('No se eligió tipo de electrificación');
  }
-
  //Renderizado
   return (
     <div className="App">
       <div className='data-input-container'>
+      <h3 className='use__title'>Responder ordenadamente para asegurar el correcto funcionamiento de la página</h3>
       <h1 className='tension-title'>Seleccionar tipo de electrificación</h1>
         <div className='tension-selector-container'>
           <Selector ref={monophasic} action={changeStyleMono} id={'tension monophasic '}>Monofásico</Selector>
