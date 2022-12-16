@@ -10,17 +10,17 @@ function App() {
   const triphasic = useRef();
   const monophasic = useRef();
   //-----
-  let BtnTension;
+  const [BtnTension, setBtnTension] = useState('');
 
   //Acciones para tensiones
   const changeStyleMono = (e) =>{
-  BtnTension === 'monophasic' ? BtnTension = undefined : BtnTension = 'monophasic';
+  BtnTension === 'monophasic' ? setBtnTension(undefined) : setBtnTension('monophasic');
   e.target.classList.toggle('btn--active');
   triphasic.current.classList.remove('btn--active');
  }
 
  const changeStyleTri = (e) =>{
-  BtnTension === 'triphasic' ? BtnTension = undefined : BtnTension = 'triphasic';
+  BtnTension === 'triphasic' ? setBtnTension(undefined) : setBtnTension('triphasic');
   e.target.classList.toggle('btn--active');
   monophasic.current.classList.remove('btn--active');
  }
@@ -190,7 +190,7 @@ const changeFocusBtn = (e) =>{
  }
 
  //Reestablece para volver a calcular
- const reset = () => {
+ /*const resetResults = () => {
   setDemandedPowerRender();
   setProyectedCurrentRender();
   setChosenSectionRender();
@@ -198,13 +198,31 @@ const changeFocusBtn = (e) =>{
   setZRValueRender();
   setSCCValueRender();
   setMinimumSectionRender();
- }
+ }*/
+
+ //Reestablecer los estilos
+ /*const resetStyles = () => {
+    if(BtnTension==='monophasic'){
+        monophasic.current.classList.remove('btn--active')
+    }else if(BtnTension==='triphasic'){
+        triphasic.current.classList.remove('btn--active')
+    }
+
+    if(BtnConduit==='buried'){
+        buried.current.classList.remove('btn--active')
+    }else if(BtnConduit==='exterior'){
+        exterior.current.classList.remove('btn--active')
+    }else if(BtnConduit==='air'){
+        air.current.classList.remove('btn--active');
+    }
+}*/
  
  const clear = (e) =>{//Btn clear
-    setResultsState('data__output__general');
-    reset();
-    BtnTension === 'monophasic' ? monophasic.current.classList.remove('btn--active') : triphasic.current.classList.remove('btn--active');
-    BtnConduit === 'buried' ? buried.current.classList.remove('btn--active'): BtnConduit === 'exterior' ? exterior.current.classList.remove('btn--active') : air.current.classList.remove('btn--active');
+    //Cancelé los resets porque no funcionaban completamente
+    /*setResultsState('data__output__general');
+    resetResults();
+    resetStyles();*/
+    window.location.reload();
 }
 
  //Variables para los calculos
